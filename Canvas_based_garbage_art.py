@@ -34,9 +34,10 @@ art_canvas = Canvas(root,
 
 
 def run():
-    user_input = format_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset)
+    user_input = get_user_input()
+#    user_input = format_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset)
     setup_watcher = Thread(target=setup,
-                          args=(art_canvas, cna, fh, user_input, q, fh))
+                          args=(art_canvas, cna, q, fh, user_input))
     setup_watcher.start()
 
 
@@ -78,8 +79,11 @@ def three():
     out = '#' + str(random.randint(100000000, 999999999))
     return out
 
+def package_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset):
+    pass
 
-def format_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset):
+
+def get_user_input():
     user_input = {}
     user_input['divrat'] = divrat_widget.get()
     user_input['debug'] = debug.get()
