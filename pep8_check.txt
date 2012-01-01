@@ -1,0 +1,5 @@
+checking garbage-art-generator\Canvas_based_garbage_art.py
+garbage-art-generator\Canvas_based_garbage_art.py:31:22: E251 no spaces around keyword / parameter equals
+garbage-art-generator\Canvas_based_garbage_art.py:37:80: E501 line too long (101 characters)
+garbage-art-generator\Canvas_based_garbage_art.py:132:15: E225 missing whitespace around operator
+garbage-art-generator\Canvas_based_garbage_art.py:133:1: W293 blank line contains whitespace

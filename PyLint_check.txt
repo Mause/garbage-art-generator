@@ -1,0 +1,421 @@
+************* Module Canvas_based_garbage_art
+C: 37,0: Line too long (101/80)
+C: 82,0: Line too long (89/80)
+C:132,0: Line too long (99/80)
+C:166,0: Line too long (81/80)
+C:169,0: Line too long (81/80)
+C:  1,0: Invalid name "Canvas_based_garbage_art" (should match (([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$)
+C:  1,0: Missing docstring
+W:  7,0: Wildcard import Tkinter
+F: 11,4: Unable to import 'queue'
+C: 21,0: Invalid name "fh" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C: 24,0: Invalid name "q" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C: 25,0: Invalid name "cna" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C: 29,0: Invalid name "root" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C: 30,0: Invalid name "art_canvas" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C: 36,0:run: Missing docstring
+E: 37,35:run: Undefined variable 'divrat'
+E: 37,50:run: Undefined variable 'height'
+E: 37,58:run: Undefined variable 'width'
+E: 37,87:run: Undefined variable 'colour_offset'
+W: 46,16:one: Redefining name 'debug' from outer scope (line 267)
+C: 46,0:one: Missing docstring
+C: 64,0:two: Missing docstring
+C: 73,0:three: Missing docstring
+W: 82,52:format_user_input: Redefining name 'tf_outline' from outer scope (line 266)
+W: 82,64:format_user_input: Redefining name 'enhanced' from outer scope (line 265)
+W: 82,30:format_user_input: Redefining name 'debug' from outer scope (line 267)
+R: 82,0:format_user_input: Too many arguments (7/5)
+C: 82,0:format_user_input: Missing docstring
+W: 82,74:format_user_input: Unused argument 'colour_offset'
+W: 82,22:format_user_input: Unused argument 'divrat'
+W: 82,37:format_user_input: Unused argument 'height'
+W: 82,45:format_user_input: Unused argument 'width'
+W: 94,34:do_colour: Redefining name 'debug' from outer scope (line 267)
+W: 94,14:do_colour: Redefining name 'col' from outer scope (line 292)
+C: 94,0:do_colour: Missing docstring
+W:108,4:setup: Redefining name 'tf_outline' from outer scope (line 266)
+W:105,27:setup: Redefining name 'q' from outer scope (line 24)
+W:106,12:setup: Redefining name 'debug' from outer scope (line 267)
+W:108,16:setup: Redefining name 'enhanced' from outer scope (line 265)
+W:105,22:setup: Redefining name 'cna' from outer scope (line 25)
+W:105,30:setup: Redefining name 'fh' from outer scope (line 21)
+W:105,10:setup: Redefining name 'art_canvas' from outer scope (line 30)
+R:105,0:setup: Too many local variables (20/15)
+C:105,0:setup: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
+C:105,0:setup: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
+C:105,0:setup: Missing docstring
+C:105,27:setup: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
+C:105,30:setup: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
+C:132,4:setup: Operator not preceded by a space
+    user_input=format_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset)
+              ^
+W:129,4:setup: Unused variable 'cube_num'
+W:131,4:setup: Unused variable 'positions'
+W:130,4:setup: Unused variable 'cube_on_row'
+W:128,4:setup: Unused variable 'cur_x'
+W:127,4:setup: Unused variable 'cur_y'
+W:144,43:create_art: Redefining name 'q' from outer scope (line 24)
+W:144,38:create_art: Redefining name 'cna' from outer scope (line 25)
+W:144,46:create_art: Redefining name 'fh' from outer scope (line 21)
+W:144,26:create_art: Redefining name 'art_canvas' from outer scope (line 30)
+R:144,0:create_art: Too many arguments (6/5)
+C:144,0:create_art: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
+C:144,0:create_art: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
+C:144,0:create_art: Missing docstring
+C:144,43:create_art: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
+C:144,46:create_art: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
+E:146,8:create_art: Undefined variable 'cube_num'
+E:147,8:create_art: Undefined variable 'cube_on_row'
+E:153,42:create_art: Undefined variable 'colour_offset'
+E:156,50:create_art: Undefined variable 'colour_offset'
+E:158,38:create_art: Undefined variable 'colour_offset'
+W:172,12:create_art: No exception type(s) specified
+E:161,40:create_art: Using variable 'cur_y' before assignment
+E:163,34:create_art: Using variable 'row_num' before assignment
+E:163,53:create_art: Using variable 'cur_x' before assignment
+E:163,61:create_art: Undefined variable 'divrat'
+E:164,20:create_art: Undefined variable 'output_array'
+E:166,74:create_art: Undefined variable 'divrat'
+E:167,56:create_art: Undefined variable 'divrat'
+E:169,74:create_art: Undefined variable 'divrat'
+E:170,56:create_art: Undefined variable 'divrat'
+E:174,24:create_art: Undefined variable 'divrat'
+E:175,43:create_art: Undefined variable 'divrat'
+E:177,12:create_art: Undefined variable 'output_array'
+E:181,21:create_art: Undefined variable 'divrat'
+E:187,10:create_art: Undefined variable 'output_array'
+W:144,50:create_art: Unused argument 'user_input'
+W:145,8:create_art: Unused variable 'temp'
+W:144,46:create_art: Unused argument 'fh'
+R:144,0:create_art: Too many branches (16/12)
+C:191,0:printer: Missing docstring
+C:194,8:printer: Invalid name "x" (should match [a-z_][a-z0-9_]{2,30}$)
+W:194,8:printer: Unused variable 'x'
+C:198,0:run_exporter: Missing docstring
+W:202,13:exporter: Redefining name 'art_canvas' from outer scope (line 30)
+C:202,0:exporter: Missing docstring
+C:214,0:execute_p: Missing docstring
+W:215,4:execute_p: Use of the exec statement
+C:220,0: Invalid name "menubar" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:229,0: Invalid name "settings_window" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:233,0: Invalid name "execute_p_widget" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:236,0: Operator not preceded by a space
+executer=Button(settings_window, text = "Execute", command = execute_p)
+        ^
+C:236,0: Invalid name "executer" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:240,0: Invalid name "divrat_label" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:244,0: Invalid name "divrat_widget" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:247,0: Invalid name "width_label" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:251,0: Invalid name "width_widget" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:254,0: Invalid name "height_label" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:258,0: Invalid name "height_widget" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:263,0: Invalid name "checkbox_frame" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:265,0: Invalid name "enhanced" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:266,0: Invalid name "tf_outline" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:267,0: Invalid name "debug" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:268,0: Invalid name "stable" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:271,0: Invalid name "enhanced_check" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:274,0: Invalid name "debug_check" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:277,0: Invalid name "stable_check" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:280,0: Invalid name "tf_outline_check" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:287,0: Invalid name "col_frame" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:288,0: Invalid name "col_label" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:292,0: Invalid name "col" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:300,0: Invalid name "colour_offset_label" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:304,0: Invalid name "colour_offset_widget" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+C:307,0: Invalid name "start" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+W:  7,0: Unused import MacOS from wildcard import
+W:  7,0: Unused import MULTIPLE from wildcard import
+W:  7,0: Unused import TypeType from wildcard import
+W:  7,0: Unused import mainloop from wildcard import
+W:  7,0: Unused import AtSelLast from wildcard import
+W:  7,0: Unused import TRUE from wildcard import
+W:  7,0: Unused import getboolean from wildcard import
+W:  7,0: Unused import LAST from wildcard import
+W:  7,0: Unused import TclVersion from wildcard import
+W:  7,0: Unused import BOTTOM from wildcard import
+W:  7,0: Unused import Wm from wildcard import
+W:  7,0: Unused import NUMERIC from wildcard import
+W:  7,0: Unused import DictProxyType from wildcard import
+W:  7,0: Unused import ObjectType from wildcard import
+W:  7,0: Unused import DictType from wildcard import
+W:  7,0: Unused import EXTENDED from wildcard import
+W:  7,0: Unused import OFF from wildcard import
+W:  7,0: Unused import CURRENT from wildcard import
+W:  7,0: Unused import getdouble from wildcard import
+W:  7,0: Unused import Scrollbar from wildcard import
+W:  7,0: Unused import ListType from wildcard import
+W:  7,0: Unused import MethodType from wildcard import
+W:  7,0: Unused import ModuleType from wildcard import
+W:  7,0: Unused import FIRST from wildcard import
+W:  7,0: Unused import ON from wildcard import
+W:  7,0: Unused import image_names from wildcard import
+W:  7,0: Unused import ClassType from wildcard import
+W:  7,0: Unused import YES from wildcard import
+W:  7,0: Unused import SliceType from wildcard import
+W:  7,0: Unused import GROOVE from wildcard import
+W:  7,0: Unused import Event from wildcard import
+W:  7,0: Unused import Scale from wildcard import
+W:  7,0: Unused import SW from wildcard import
+W:  7,0: Unused import CodeType from wildcard import
+W:  7,0: Unused import BaseWidget from wildcard import
+W:  7,0: Unused import image_types from wildcard import
+W:  7,0: Unused import AtInsert from wildcard import
+W:  7,0: Unused import StringType from wildcard import
+W:  7,0: Unused import NONE from wildcard import
+W:  7,0: Unused import Menubutton from wildcard import
+W:  7,0: Unused import Spinbox from wildcard import
+W:  7,0: Unused import UnicodeType from wildcard import
+W:  7,0: Unused import Grid from wildcard import
+W:  7,0: Unused import NORMAL from wildcard import
+W:  7,0: Unused import StringTypes from wildcard import
+W:  7,0: Unused import GeneratorType from wildcard import
+W:  7,0: Unused import FileType from wildcard import
+W:  3,0: Unused import math
+W:  7,0: Unused import FLAT from wildcard import
+W:  7,0: Unused import END from wildcard import
+W:  7,0: Unused import VERTICAL from wildcard import
+W:  7,0: Unused import UnboundMethodType from wildcard import
+W:  7,0: Unused import MITER from wildcard import
+W:  7,0: Unused import Widget from wildcard import
+W:  7,0: Unused import DISABLED from wildcard import
+W:  7,0: Unused import S from wildcard import
+W:  7,0: Unused import Place from wildcard import
+W:  7,0: Unused import W from wildcard import
+W:  7,0: Unused import ACTIVE from wildcard import
+W:  7,0: Unused import NSEW from wildcard import
+W:  7,0: Unused import EW from wildcard import
+W:  7,0: Unused import FrameType from wildcard import
+W:  7,0: Unused import Pack from wildcard import
+W:  7,0: Unused import BooleanType from wildcard import
+W:  7,0: Unused import LambdaType from wildcard import
+W:  7,0: Unused import tkinter from wildcard import
+W:  7,0: Unused import Image from wildcard import
+W:  7,0: Unused import BitmapImage from wildcard import
+W:  7,0: Unused import AtSelFirst from wildcard import
+W:  7,0: Unused import Tcl from wildcard import
+W:  7,0: Unused import PAGES from wildcard import
+W:  7,0: Unused import COMMAND from wildcard import
+W:  7,0: Unused import HIDDEN from wildcard import
+W:  7,0: Unused import EllipsisType from wildcard import
+W:  7,0: Unused import NoDefaultRoot from wildcard import
+W:  7,0: Unused import CHAR from wildcard import
+W:  7,0: Unused import SEPARATOR from wildcard import
+W:  7,0: Unused import BUTT from wildcard import
+W:  7,0: Unused import RADIOBUTTON from wildcard import
+W:  7,0: Unused import HORIZONTAL from wildcard import
+W:  7,0: Unused import NE from wildcard import
+W:  7,0: Unused import TclError from wildcard import
+W:  7,0: Unused import MOVETO from wildcard import
+W:  7,0: Unused import WORD from wildcard import
+W:  7,0: Unused import SUNKEN from wildcard import
+W:  7,0: Unused import NO from wildcard import
+W:  7,0: Unused import DictionaryType from wildcard import
+W:  7,0: Unused import NotImplementedType from wildcard import
+W:  7,0: Unused import READABLE from wildcard import
+W:  7,0: Unused import CHECKBUTTON from wildcard import
+W:  4,0: Unused import time
+W:  7,0: Unused import Variable from wildcard import
+W:  7,0: Unused import NS from wildcard import
+W:  7,0: Unused import ANCHOR from wildcard import
+W:  7,0: Unused import LEFT from wildcard import
+W:  7,0: Unused import RAISED from wildcard import
+W:  7,0: Unused import AtEnd from wildcard import
+W:  7,0: Unused import BooleanVar from wildcard import
+W:  7,0: Unused import Tributton from wildcard import
+W:  7,0: Unused import SOLID from wildcard import
+W:  7,0: Unused import N from wildcard import
+W:  7,0: Unused import CASCADE from wildcard import
+W:  7,0: Unused import SEL_FIRST from wildcard import
+W:  7,0: Unused import CHORD from wildcard import
+W:  7,0: Unused import TkVersion from wildcard import
+W:  7,0: Unused import UNDERLINE from wildcard import
+W:  7,0: Unused import UNITS from wildcard import
+W:  7,0: Unused import TupleType from wildcard import
+W:  7,0: Unused import BASELINE from wildcard import
+W:  7,0: Unused import OptionMenu from wildcard import
+W:  7,0: Unused import LongType from wildcard import
+W:  7,0: Unused import SEL from wildcard import
+W:  7,0: Unused import FALSE from wildcard import
+W:  7,0: Unused import Text from wildcard import
+W:  7,0: Unused import SEL_LAST from wildcard import
+W:  7,0: Unused import Misc from wildcard import
+W:  7,0: Unused import SINGLE from wildcard import
+W:  7,0: Unused import LabelFrame from wildcard import
+W:  7,0: Unused import MemberDescriptorType from wildcard import
+W:  7,0: Unused import wantobjects from wildcard import
+W:  7,0: Unused import SE from wildcard import
+W:  7,0: Unused import EXCEPTION from wildcard import
+W:  7,0: Unused import FixTk from wildcard import
+W:  7,0: Unused import IntType from wildcard import
+W:  7,0: Unused import DoubleVar from wildcard import
+W:  7,0: Unused import DOTBOX from wildcard import
+W:  7,0: Unused import XRangeType from wildcard import
+W:  7,0: Unused import OUTSIDE from wildcard import
+W:  7,0: Unused import PanedWindow from wildcard import
+W:  7,0: Unused import INSERT from wildcard import
+W:  7,0: Unused import BuiltinMethodType from wildcard import
+W:  7,0: Unused import BROWSE from wildcard import
+W:  7,0: Unused import BuiltinFunctionType from wildcard import
+W:  7,0: Unused import ROUND from wildcard import
+W:  7,0: Unused import ARC from wildcard import
+W:  7,0: Unused import FunctionType from wildcard import
+W:  7,0: Unused import X from wildcard import
+W:  7,0: Unused import TracebackType from wildcard import
+W:  7,0: Unused import BEVEL from wildcard import
+W:  7,0: Unused import E from wildcard import
+W:  7,0: Unused import InstanceType from wildcard import
+W:  7,0: Unused import PIESLICE from wildcard import
+W:  7,0: Unused import sys from wildcard import
+W:  7,0: Unused import Y from wildcard import
+W:  7,0: Unused import NW from wildcard import
+W:  7,0: Unused import Message from wildcard import
+W:  7,0: Unused import CENTER from wildcard import
+W:  7,0: Unused import Listbox from wildcard import
+W:  7,0: Unused import PhotoImage from wildcard import
+W:  7,0: Unused import RIGHT from wildcard import
+W:  7,0: Unused import BufferType from wildcard import
+W:  7,0: Unused import Studbutton from wildcard import
+W:  7,0: Unused import INSIDE from wildcard import
+W:  7,0: Unused import FloatType from wildcard import
+W:  7,0: Unused import CallWrapper from wildcard import
+W:  7,0: Unused import WRITABLE from wildcard import
+W:  7,0: Unused import PROJECTING from wildcard import
+W:  7,0: Unused import At from wildcard import
+W:  7,0: Unused import ComplexType from wildcard import
+W:  7,0: Unused import GetSetDescriptorType from wildcard import
+W:  7,0: Unused import SCROLL from wildcard import
+W:  7,0: Unused import NoneType from wildcard import
+W:  7,0: Unused import getint from wildcard import
+
+
+Report
+======
+199 statements analysed.
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |60     |56       |+4.00      |
++-----------+-------+---------+-----------+
+|refactor   |4      |3        |+1.00      |
++-----------+-------+---------+-----------+
+|warning    |197    |196      |+1.00      |
++-----------+-------+---------+-----------+
+|error      |23     |19       |+4.00      |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++-----------+------------+
+|message id |occurrences |
++===========+============+
+|W0614      |161         |
++-----------+------------+
+|C0103      |40          |
++-----------+------------+
+|E0602      |20          |
++-----------+------------+
+|W0621      |18          |
++-----------+------------+
+|C0111      |13          |
++-----------+------------+
+|W0612      |7           |
++-----------+------------+
+|W0613      |6           |
++-----------+------------+
+|C0301      |5           |
++-----------+------------+
+|E0601      |3           |
++-----------+------------+
+|W0611      |2           |
++-----------+------------+
+|R0913      |2           |
++-----------+------------+
+|C0322      |2           |
++-----------+------------+
+|W0702      |1           |
++-----------+------------+
+|W0401      |1           |
++-----------+------------+
+|W0122      |1           |
++-----------+------------+
+|R0914      |1           |
++-----------+------------+
+|R0912      |1           |
++-----------+------------+
+|F0401      |1           |
++-----------+------------+
+
+
+
+Global evaluation
+-----------------
+Your code has been rated at -8.89/10 (previous run: -7.68/10)
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |1      |1          |=          |0.00        |100.00   |
++---------+-------+-----------+-----------+------------+---------+
+|class    |0      |0          |=          |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|method   |0      |0          |=          |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|function |12     |12         |=          |0.00        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |222    |79.29 |221      |+1.00      |
++----------+-------+------+---------+-----------+
+|docstring |6      |2.14  |6        |=          |
++----------+-------+------+---------+-----------+
+|comment   |21     |7.50  |21       |=          |
++----------+-------+------+---------+-----------+
+|empty     |31     |11.07 |30       |+1.00      |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |=          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+
+
+
+External dependencies
+---------------------
+::
+
+    Queue (Canvas_based_garbage_art)
+    colorsys (Canvas_based_garbage_art)
+    random (Canvas_based_garbage_art)
+    threading 
+      \-Thread (Canvas_based_garbage_art)
+
+
+

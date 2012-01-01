@@ -1,8 +1,9 @@
+#!/usr/bin/env python
+
 import math
 import time
 import random
 import colorsys
-import os
 from Tkinter import *
 from threading import Thread
 
@@ -26,48 +27,41 @@ cna = {'width': '800', 'height': '800'}
 print '\nStarting canvas cage...\n'
 
 root = Tk()
-canvas = Canvas(root,
+art_canvas = Canvas(root,
                 width = cna['width'],
                 height = cna['height'],
                 border = 5)
 
 
 def run():
-    user_input = format_user_input(divrat.get(),
-                                   debug.get(),
-                                   height.get(),
-                                   width.get(),
-                                   tf_outline.get(),
-                                   enhanced.get(),
-                                   colour_offset.get())
-    bbox_watcher = Thread(target=bbox,
-                          args=(canvas, cna, q, fh, user_input, q, fh))
-    bbox_watcher.start()
-    if not stable:
-        bbox_watcher.join()
-        #print 'Starting printer...'
-        #printer(q.get())
-        #Thread(target=printer, args=(q.get()))
+    user_input = format_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset)
+    setup_watcher = Thread(target=setup,
+                          args=(art_canvas, cna, fh, user_input, q, fh))
+    setup_watcher.start()
+
 
 # Three different choices of colour generators :D
 
 
-def One(offset, debug):
+def one(offset, debug):
     if offset == '':
         offset = int(50)
     else:
         offset = int(offset)
     colours = (colorsys.hsv_to_rgb(random.random(), 0.5, 0.95))
     final_colours = []
-    for x in range(len(colours)):
-        final_colours.append(offset + int(colours[x] * 100))
+    for colour_num in range(len(colours)):
+        final_colours.append(offset + int(colours[colour_num] * 100))
     if debug:
         print str(colours)
-    temp_fill = "#%02d%02d%02d" % final_colours
+    temp_fill = '#'
+    temp_fill += str(final_colours[0])
+    temp_fill += str(final_colours[1])
+    temp_fill += str(final_colours[2])
     return temp_fill[:7]
 
 
-def Two():
+def two():
     blue = hex(random.randint(0, 65536))
     green = hex(random.randint(0, 65536))
     red = hex(random.randint(0, 65536))
@@ -76,7 +70,7 @@ def Two():
     return out
 
 
-def Three():
+def three():
     #colours += str(random.randint(100, 360))
     #colours += str(random.randint(100, 360))
     #colours += str(random.randint(100, 360))
@@ -85,36 +79,40 @@ def Three():
     return out
 
 
-def format_user_input():
-#divrat, debug, height, width, tf_outline, enhanced, colour_offset):
+def format_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset):
     user_input = {}
-    user_input['divrat'] = divrat
-    user_input['debug'] = debug
-    user_input['height'] = height
-    user_input['width'] = tf_outline
-    user_input['enhanced'] = enhanced
-    user_input['colour_offset'] = colour_offset
+    user_input['divrat'] = divrat_widget.get()
+    user_input['debug'] = debug.get()
+    user_input['height'] = height_widget.get()
+    user_input['width'] = width_widget.get()
+    user_input['tf_outline'] = tf_outline.get()
+    user_input['enhanced'] = enhanced.get()
+    user_input['colour_offset'] = colour_offset_widget.get()
     return user_input
 
 
 def do_colour(col, colour_offset, debug):
     col = int(col.get())
     if col == 1:
-        fill = One(colour_offset, debug)
+        fill = one(colour_offset, debug)
     if col == 2:
-        fill = Two()
+        fill = two()
     if col == 3:
-        fill = Three()
+        fill = three()
     return fill
 
 
-def bbox(canvas, cna, q, fh, user_input, *args):
+def setup(art_canvas, cna, q, fh, user_input):
+    divrat, debug = user_input['divrat'], user_input['debug']
+    width, height = user_input['width'], user_input['height']
+    tf_outline, enhanced = user_input['tf_outline'], user_input['enhanced']
+    colour_offset = user_input['colour_offset']
     if debug:
         print 'DIVRAT: ', divrat
     output_array = dict()
     row_num = 0
     output_array[str(row_num)] = list()
-    canvas.delete(ALL)
+    art_canvas.delete(ALL)
     if divrat == '':
         print 'DIVRAT is outside recommended specifications, setting to ten'
         divrat = int(10)
@@ -124,14 +122,26 @@ def bbox(canvas, cna, q, fh, user_input, *args):
         height = int(800)
     divrat, height, width = int(divrat), int(height), int(width)
 
-    canvas.config(width=width, height=height)
-    cna['height'] = int(height)
-    cna['width'] = int(width)
+    art_canvas.config(width = width, height = height)
+    cna['height'], cna['width'] = int(height), int(width)
     cur_y = 0
     cur_x = 0
     cube_num = 0
     cube_on_row = 0
     positions = range((cna['height'] / divrat) * (cna['width'] / divrat))
+    user_input=format_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset)
+    
+    art_creator_watcher = Thread(target=create_art,
+                          args=(art_canvas, cna, fh, user_input, q, fh))
+    art_creator_watcher.start()
+    if not stable:
+        art_creator_watcher.join()
+        #print 'Starting printer...'
+        #printer(q.get())
+        #Thread(target=printer, args=(q.get()))
+
+
+def create_art(positions, art_canvas, cna, q, fh, user_input):
     for temp in positions:
         cube_num += 1
         cube_on_row += 1
@@ -152,14 +162,12 @@ def bbox(canvas, cna, q, fh, user_input, *args):
                     if debug:
                         print str(row_num), ':', str(cur_x / divrat)
                     output_array[str(row_num)].append(str(fill))
-                    cur_index = int(cur_x / divrat)
                     if tf_outline:
-                        canvas.create_rectangle(cur_x, cur_y, cur_x + divrat,
-                                                cur_y + divrat, fill = fill)
+                        art_canvas.create_rectangle(cur_x, cur_y, cur_x + divrat,
+                                                cur_y + divrat, fill)
                     else:
-                        canvas.create_rectangle(cur_x, cur_y, cur_x + divrat,
-                                                cur_y + divrat, fill = fill,
-                                                outline = fill)
+                        art_canvas.create_rectangle(cur_x, cur_y, cur_x + divrat,
+                                                cur_y + divrat, fill, fill)
                 break
             except:
                 pass
@@ -188,45 +196,45 @@ def printer(output_array):
 
 
 def run_exporter():
-    Thread(target=exporter, args=(canvas,)).start()
+    Thread(target=exporter, args=(art_canvas,)).start()
 
 
-def exporter(canvas):
+def exporter(art_canvas):
     filename = "Colour_grid_" + str(random.randint(1000, 2000)) + ".ps"
     print '''Exporting the canvas;
 contents will be in the PostScript format; heres the filename:''', filename
-    canvas.postscript(file='output\\' + filename)
+    art_canvas.postscript(file='output\\' + filename)
 #    command += '''C:\\Program Files (x86)\\gs\\gs9.04\\bin\\gswin32.exe'''
 #    command += '''-sOutputFile='''
-#    command += filename[:-3]+' '+str(os.getcwd())+'\\'+filename
+#    command += filename[:-3] + ' '+str(os.getcwd()) + '\\'+filename
  #   print command
   #  os.system(command)
 
 
 def execute_p():
-    exec (execute_p_widget.get())
+    exec execute_p_widget.get()
 
 
 # The rest of the code defines the gui elements
 
 menubar = Menu(root)
-menubar.add_command(label="Generate A.R.T.", command=run)
-#menubar.add_command(label="Settings", command=create_settings_window)
-menubar.add_command(label="Export A.R.T.", command=run_exporter)
+menubar.add_command(label = "Generate A.R.T.", command = run)
+#menubar.add_command(label = "Settings", command = create_settings_window)
+menubar.add_command(label = "Export A.R.T.", command = run_exporter)
 
 # The following chunk of code defines the tearaway settings window.
 # More intuitive for users not familiar with the command line :)
 #settings_window = Frame(root)
-#settings_window.width=30
+#settings_window.width = 30
 settings_window = Toplevel()
-settings_window.config(menu=menubar)
+settings_window.config(menu = menubar)
 settings_window.title('Settings Window')
 
-#execute_p_widget = Entry(settings_window)
-#execute_p_widget.pack(side = TOP, fill=BOTH, expand=1)
+execute_p_widget = Entry(settings_window)
+#execute_p_widget.pack(side = TOP, fill = BOTH, expand = 1)
 
-#executer=Button(settings_window, text="Execute", command=execute_p)
-#executer.pack(fill=BOTH, expand=1)
+executer=Button(settings_window, text = "Execute", command = execute_p)
+#executer.pack(fill = BOTH, expand = 1)
 
 
 divrat_label = Label(settings_window,
@@ -301,7 +309,7 @@ start.pack(fill=BOTH, expand=1)
 
 #settings_window.pack(side = TOP)
 
-canvas.pack()
+art_canvas.pack()
 root.config(menu=menubar)
 root.title(string="Canvas Based A.R.T. Generator - Written by Dominic May")
 
