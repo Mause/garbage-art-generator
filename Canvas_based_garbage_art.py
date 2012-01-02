@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import math
 import time
 import random
 import colorsys
@@ -15,7 +14,7 @@ except ImportError:
 # intro, credits...
 print 'Canvas Based Garbage Art'
 print 'Written by Dominic May, with valuable input from Steven Smith'
-print '									'
+print 'Program execution began at', str(time.time())
 
 
 fh = open('log.log', 'wb')
@@ -35,7 +34,8 @@ art_canvas = Canvas(root,
 
 def run():
     user_input = get_user_input()
-#    user_input = format_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset)
+#user_input = format_user_input(divrat, debug, height, width, tf_outline,
+# enhanced, colour_offset)
     setup_watcher = Thread(target=setup,
                           args=(art_canvas, cna, q, fh, user_input))
     setup_watcher.start()
@@ -79,8 +79,17 @@ def three():
     out = '#' + str(random.randint(100000000, 999999999))
     return out
 
+
 def package_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset):
-    pass
+    user_input = {}
+    user_input['divrat'] = divrat
+    user_input['debug'] = debug
+    user_input['height'] = height
+    user_input['width'] = width
+    user_input['tf_outline'] = tf_outline
+    user_input['enhanced'] = enhanced
+    user_input['colour_offset'] = colour_offset
+    return user_input
 
 
 def get_user_input():
@@ -103,6 +112,8 @@ def do_colour(col, colour_offset, debug):
         fill = two()
     if col == 3:
         fill = three()
+    if debug:
+        print 'fill', fill
     return fill
 
 
@@ -113,9 +124,7 @@ def setup(art_canvas, cna, q, fh, user_input):
     colour_offset = user_input['colour_offset']
     if debug:
         print 'DIVRAT: ', divrat
-    output_array = dict()
     row_num = 0
-    output_array[str(row_num)] = list()
     art_canvas.delete(ALL)
     if divrat == '':
         print 'DIVRAT is outside recommended specifications, setting to ten'
@@ -133,10 +142,23 @@ def setup(art_canvas, cna, q, fh, user_input):
     cube_num = 0
     cube_on_row = 0
     positions = range((cna['height'] / divrat) * (cna['width'] / divrat))
-    user_input=format_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset)
-    
+    user_input = package_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset)
+    if debug:
+        print str(user_input)
     art_creator_watcher = Thread(target=create_art,
-                          args=(art_canvas, cna, fh, user_input, q, fh))
+                          args=(positions,
+                                art_canvas,
+                                cna,
+                                q,
+                                fh,
+                                user_input,
+                                row_num,
+                                cur_x,
+                                cur_y,
+                                cube_num,
+                                cube_on_row))
+    if debug:
+        print 'Setup finished. Starting printing operation...'
     art_creator_watcher.start()
     if not stable:
         art_creator_watcher.join()
@@ -144,8 +166,16 @@ def setup(art_canvas, cna, q, fh, user_input):
         #printer(q.get())
         #Thread(target=printer, args=(q.get()))
 
-
-def create_art(positions, art_canvas, cna, q, fh, user_input):
+##               positions, art_canvas, cna, q, fh, user_input, row_num, cur_x, cur_y, cube_num, cube_on_row
+def create_art(positions, art_canvas, cna, q, fh, user_input, row_num, cur_x, cur_y, cube_num, cube_on_row):
+    divrat, debug = user_input['divrat'], user_input['debug']
+    width, height = user_input['width'], user_input['height']
+    tf_outline, enhanced = user_input['tf_outline'], user_input['enhanced']
+    colour_offset = user_input['colour_offset']
+    output_array = dict()
+    output_array[str(row_num)] = list()
+    if debug:
+        print 'Number of positions: ', len(positions)
     for temp in positions:
         cube_num += 1
         cube_on_row += 1
@@ -160,21 +190,21 @@ def create_art(positions, art_canvas, cna, q, fh, user_input):
                             fill = do_colour(col, colour_offset, debug)
             else:
                 fill = do_colour(col, colour_offset, debug)
-            #print 'fill: ', fill
-            try:
+            if 'x' == 'x':
                 if cube_on_row != 1 and cur_y != 0:
                     if debug:
                         print str(row_num), ':', str(cur_x / divrat)
                     output_array[str(row_num)].append(str(fill))
                     if tf_outline:
                         art_canvas.create_rectangle(cur_x, cur_y, cur_x + divrat,
-                                                cur_y + divrat, fill)
+                                                    cur_y + divrat)#,
+                                                   # fill)
                     else:
                         art_canvas.create_rectangle(cur_x, cur_y, cur_x + divrat,
-                                                cur_y + divrat, fill, fill)
+                                                    cur_y + divrat, fill, fill)
                 break
-            except:
-                pass
+            #except:
+             #   pass
         cur_x = cur_x + divrat
         if cube_on_row == (cna['width']) / divrat:
             row_num += 1
@@ -188,6 +218,9 @@ def create_art(positions, art_canvas, cna, q, fh, user_input):
         if debug:
             print 'X&Y:', cur_x, ':', cur_y
             print 'CN&COR:', cube_num, ':', cube_on_row
+        #if cube_num == 100:
+         #   print 'breaking...'
+          #  break
     q.put(output_array)
     print '\nCreating done.\n'
 
@@ -237,7 +270,7 @@ settings_window.title('Settings Window')
 execute_p_widget = Entry(settings_window)
 #execute_p_widget.pack(side = TOP, fill = BOTH, expand = 1)
 
-executer=Button(settings_window, text = "Execute", command = execute_p)
+executer = Button(settings_window, text = "Execute", command = execute_p)
 #executer.pack(fill = BOTH, expand = 1)
 
 
