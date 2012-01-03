@@ -1,8 +1,12 @@
 #!/usr/bin/env python
-
+'''This program creates a grid of squares, where colors are generated
+randomly. Each of the squares has its colour generated, however in the
+enhanced version, the squares have a one in two chance of being the
+same colour as the previous square'''
 import time
 import random
 import colorsys
+import logging
 from Tkinter import *
 from threading import Thread
 
@@ -20,6 +24,14 @@ print 'Program execution began at', str(time.time())
 fh = open('log.log', 'wb')
 
 
+logger = logging.getLogger('CBGA')
+hdlr = logging.FileHandler('CBGA.log')
+formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+hdlr.setFormatter(formatter)
+logger.addHandler(hdlr)
+logger.setLevel(logging.DEBUG)
+
+
 q = queue.Queue()
 cna = {'width': '800', 'height': '800'}
 
@@ -33,6 +45,8 @@ art_canvas = Canvas(root,
 
 
 def run():
+    '''This functions creates a new thread that executes the
+setup and printing code'''
     user_input = get_user_input()
 #user_input = format_user_input(divrat, debug, height, width, tf_outline,
 # enhanced, colour_offset)
@@ -41,10 +55,33 @@ def run():
     setup_watcher.start()
 
 
+def cogger(debug, data):
+    "This functions formalises the logging and debugging process"
+    if debug:
+        print str(data)
+    logger.debug(str(data))
+
+
+def do_colour(col, colour_offset, debug):
+    "Selects a colour generator accourding to input variables"
+    col = int(col.get())
+    if col == 1:
+        fill = one(colour_offset, debug)
+    if col == 2:
+        fill = two()
+    if col == 3:
+        fill = three()
+    if col == 4:
+        fill = four()
+    cogger(debug, 'fill' + fill)
+    return fill
+
 # Three different choices of colour generators :D
 
 
 def one(offset, debug):
+    '''A colour generator based on the colorsys.hsv_to_rgb function.
+Accepts an offset variable for extra user input'''
     if offset == '':
         offset = int(50)
     else:
@@ -53,8 +90,7 @@ def one(offset, debug):
     final_colours = []
     for colour_num in range(len(colours)):
         final_colours.append(offset + int(colours[colour_num] * 100))
-    if debug:
-        print str(colours)
+    cogger(debug, colours)
     temp_fill = '#'
     temp_fill += str(final_colours[0])
     temp_fill += str(final_colours[1])
@@ -63,6 +99,8 @@ def one(offset, debug):
 
 
 def two():
+    '''A colour generator utilising random umbers formatted in hex,
+before being concatenated together'''
     blue = hex(random.randint(0, 65536))
     green = hex(random.randint(0, 65536))
     red = hex(random.randint(0, 65536))
@@ -72,15 +110,25 @@ def two():
 
 
 def three():
+    "A colour generator that simply utilises random numbers, without conversion"
     #colours += str(random.randint(100, 360))
     #colours += str(random.randint(100, 360))
     #colours += str(random.randint(100, 360))
 #    out='#' + colours
-    out = '#' + str(random.randint(100000000, 999999999))
+    out = '#' + str(random.randint(100000000, 999999999))[:9]
     return out
 
 
+def four():
+    "A colour generator that simply selects colours from a list"
+    colours = ['dark blue', 'blue', 'light blue',
+               'dark green', 'green', 'light green',
+               'dark red', 'red', 'light red']
+    return random.choice(colours)
+
+
 def package_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset):
+    "Repackages cleaned and formatted user input"
     user_input = {}
     user_input['divrat'] = divrat
     user_input['debug'] = debug
@@ -93,6 +141,7 @@ def package_user_input(divrat, debug, height, width, tf_outline, enhanced, colou
 
 
 def get_user_input():
+    "Gets user input from gui, packages in single variable for transport"
     user_input = {}
     user_input['divrat'] = divrat_widget.get()
     user_input['debug'] = debug.get()
@@ -104,26 +153,13 @@ def get_user_input():
     return user_input
 
 
-def do_colour(col, colour_offset, debug):
-    col = int(col.get())
-    if col == 1:
-        fill = one(colour_offset, debug)
-    if col == 2:
-        fill = two()
-    if col == 3:
-        fill = three()
-    if debug:
-        print 'fill', fill
-    return fill
-
-
 def setup(art_canvas, cna, q, fh, user_input):
+    "This setups all the variables for the creation of the art"
     divrat, debug = user_input['divrat'], user_input['debug']
     width, height = user_input['width'], user_input['height']
     tf_outline, enhanced = user_input['tf_outline'], user_input['enhanced']
     colour_offset = user_input['colour_offset']
-    if debug:
-        print 'DIVRAT: ', divrat
+    cogger(debug, 'DIVRAT: ' + divrat)
     row_num = 0
     art_canvas.delete(ALL)
     if divrat == '':
@@ -143,8 +179,7 @@ def setup(art_canvas, cna, q, fh, user_input):
     cube_on_row = 0
     positions = range((cna['height'] / divrat) * (cna['width'] / divrat))
     user_input = package_user_input(divrat, debug, height, width, tf_outline, enhanced, colour_offset)
-    if debug:
-        print str(user_input)
+    cogger(debug, user_input)
     art_creator_watcher = Thread(target=create_art,
                           args=(positions,
                                 art_canvas,
@@ -157,8 +192,7 @@ def setup(art_canvas, cna, q, fh, user_input):
                                 cur_y,
                                 cube_num,
                                 cube_on_row))
-    if debug:
-        print 'Setup finished. Starting printing operation...'
+    cogger(debug, 'Setup finished. Starting printing operation...')
     art_creator_watcher.start()
     if not stable:
         art_creator_watcher.join()
@@ -166,23 +200,22 @@ def setup(art_canvas, cna, q, fh, user_input):
         #printer(q.get())
         #Thread(target=printer, args=(q.get()))
 
-##               positions, art_canvas, cna, q, fh, user_input, row_num, cur_x, cur_y, cube_num, cube_on_row
+
 def create_art(positions, art_canvas, cna, q, fh, user_input, row_num, cur_x, cur_y, cube_num, cube_on_row):
+    "Prints the coloured squares to the canvas"
     divrat, debug = user_input['divrat'], user_input['debug']
     width, height = user_input['width'], user_input['height']
     tf_outline, enhanced = user_input['tf_outline'], user_input['enhanced']
     colour_offset = user_input['colour_offset']
     output_array = dict()
     output_array[str(row_num)] = list()
-    if debug:
-        print 'Number of positions: ', len(positions)
+    cogger(debug, 'Number of positions: ' + str(len(positions)))
     for temp in positions:
         cube_num += 1
         cube_on_row += 1
         while True:
             if enhanced == True:
-                if debug:
-                    print 'Enhanced equals True :D'
+                cogger(debug, 'Enhanced equals True :D')
                 if random.choice(range(2)) == 1:
                     fill = do_colour(col, colour_offset, debug)
                     if col == 1:
@@ -190,34 +223,31 @@ def create_art(positions, art_canvas, cna, q, fh, user_input, row_num, cur_x, cu
                             fill = do_colour(col, colour_offset, debug)
             else:
                 fill = do_colour(col, colour_offset, debug)
-            if 'x' == 'x':
+            try:
                 if cube_on_row != 1 and cur_y != 0:
-                    if debug:
-                        print str(row_num), ':', str(cur_x / divrat)
+                    cogger(debug, str(row_num) + ':' + str(cur_x / divrat))
                     output_array[str(row_num)].append(str(fill))
                     if tf_outline:
-                        art_canvas.create_rectangle(cur_x, cur_y, cur_x + divrat,
-                                                    cur_y + divrat)#,
-                                                   # fill)
+                        art_canvas.create_rectangle((cur_x, cur_y),
+                                                    ((cur_x + divrat), (cur_y + divrat)),
+                                                    fill)
                     else:
-                        art_canvas.create_rectangle(cur_x, cur_y, cur_x + divrat,
-                                                    cur_y + divrat, fill, fill)
+                        art_canvas.create_rectangle((cur_x, cur_y), ((cur_x + divrat), int(cur_y + divrat)),
+                                                    fill=fill, outline=fill)
                 break
-            #except:
-             #   pass
+            except TclError:
+                pass
         cur_x = cur_x + divrat
         if cube_on_row == (cna['width']) / divrat:
             row_num += 1
             output_array[str(row_num)] = list()
-            if debug:
-                print "Beginning a new row"
+            cogger(debug, "Beginning a new row")
             cube_on_row = 0
             cur_y += divrat
             cur_x = 0
 
-        if debug:
-            print 'X&Y:', cur_x, ':', cur_y
-            print 'CN&COR:', cube_num, ':', cube_on_row
+        cogger(debug, 'X&Y:' + str(cur_x) + ':' + str(cur_y))
+        cogger(debug, 'CN&COR:' + str(cube_num) + ':' + str(cube_on_row))
         #if cube_num == 100:
          #   print 'breaking...'
           #  break
@@ -226,17 +256,20 @@ def create_art(positions, art_canvas, cna, q, fh, user_input, row_num, cur_x, cu
 
 
 def printer(output_array):
+    "A depreiciated functions designed to print the output of the create_art function"
     print 'Printer is starting...'
     fh.write(str(output_array))
-    for x in output_array['1']:
-        pass
+#    for x in output_array['1']:
+ #       pass
 
 
 def run_exporter():
+    "Executes the exporter functions in a seperate thread"
     Thread(target=exporter, args=(art_canvas,)).start()
 
 
 def exporter(art_canvas):
+    "Grabs the postscript data from the canvas and writes it into a file"
     filename = "Colour_grid_" + str(random.randint(1000, 2000)) + ".ps"
     print '''Exporting the canvas;
 contents will be in the PostScript format; heres the filename:''', filename
@@ -249,6 +282,7 @@ contents will be in the PostScript format; heres the filename:''', filename
 
 
 def execute_p():
+    "Executes code specified in the execute widgets"
     exec execute_p_widget.get()
 
 
@@ -330,6 +364,7 @@ col = StringVar()
 Radiobutton(col_frame, text="One", variable=col, value=1).pack()
 Radiobutton(col_frame, text="Two", variable=col, value=2).pack()
 Radiobutton(col_frame, text="Three", variable=col, value=3).pack()
+Radiobutton(col_frame, text="Four", variable=col, value=4).pack()
 col.set('2')
 col_frame.pack(side = TOP)
 

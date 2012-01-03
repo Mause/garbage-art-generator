@@ -1,103 +1,37 @@
 ************* Module Canvas_based_garbage_art
-C0301: 83,0: Line too long (90/80)
-C0301:145,0: Line too long (102/80)
-C0301:169,0: Line too long (108/80)
-C0301:170,0: Line too long (108/80)
-C0301:199,0: Line too long (81/80)
-C0301:203,0: Line too long (81/80)
+C0301:130,0: Line too long (90/80)
+C0301:181,0: Line too long (102/80)
+C0301:204,0: Line too long (108/80)
+C0301:232,0: Line too long (89/80)
+C0301:235,0: Line too long (108/80)
+C0301:259,0: Line too long (86/80)
 C0103:  1,0: Invalid name "Canvas_based_garbage_art" (should match (([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$)
-C0111:  1,0: Missing docstring
-W0401:  6,0: Wildcard import Tkinter
-F0401: 10,4: Unable to import 'queue'
-C0103: 20,0: Invalid name "fh" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103: 23,0: Invalid name "q" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103: 24,0: Invalid name "cna" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103: 28,0: Invalid name "root" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103: 29,0: Invalid name "art_canvas" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0111: 35,0:run: Missing docstring
-W0621: 47,16:one: Redefining name 'debug' from outer scope (line 304)
-C0111: 47,0:one: Missing docstring
-C0111: 65,0:two: Missing docstring
-C0111: 74,0:three: Missing docstring
-W0621: 83,53:package_user_input: Redefining name 'tf_outline' from outer scope (line 303)
-W0621: 83,65:package_user_input: Redefining name 'enhanced' from outer scope (line 302)
-W0621: 83,31:package_user_input: Redefining name 'debug' from outer scope (line 304)
-R0913: 83,0:package_user_input: Too many arguments (7/5)
-C0111: 83,0:package_user_input: Missing docstring
-C0111: 95,0:get_user_input: Missing docstring
-W0621:107,34:do_colour: Redefining name 'debug' from outer scope (line 304)
-W0621:107,14:do_colour: Redefining name 'col' from outer scope (line 329)
-C0111:107,0:do_colour: Missing docstring
-W0621:123,4:setup: Redefining name 'tf_outline' from outer scope (line 303)
-W0621:120,27:setup: Redefining name 'q' from outer scope (line 23)
-W0621:121,12:setup: Redefining name 'debug' from outer scope (line 304)
-W0621:123,16:setup: Redefining name 'enhanced' from outer scope (line 302)
-W0621:120,22:setup: Redefining name 'cna' from outer scope (line 24)
-W0621:120,30:setup: Redefining name 'fh' from outer scope (line 20)
-W0621:120,10:setup: Redefining name 'art_canvas' from outer scope (line 29)
-R0914:120,0:setup: Too many local variables (19/15)
-C0103:120,0:setup: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
-C0103:120,0:setup: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
-C0111:120,0:setup: Missing docstring
-C0103:120,27:setup: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
-C0103:120,30:setup: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
-W0621:173,4:create_art: Redefining name 'tf_outline' from outer scope (line 303)
-W0621:170,43:create_art: Redefining name 'q' from outer scope (line 23)
-W0621:171,12:create_art: Redefining name 'debug' from outer scope (line 304)
-W0621:173,16:create_art: Redefining name 'enhanced' from outer scope (line 302)
-W0621:170,38:create_art: Redefining name 'cna' from outer scope (line 24)
-W0621:170,46:create_art: Redefining name 'fh' from outer scope (line 20)
-W0621:170,26:create_art: Redefining name 'art_canvas' from outer scope (line 29)
-R0913:170,0:create_art: Too many arguments (11/5)
-R0914:170,0:create_art: Too many local variables (21/15)
-C0103:170,0:create_art: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
-C0103:170,0:create_art: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
-C0111:170,0:create_art: Missing docstring
-C0103:170,43:create_art: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
-C0103:170,46:create_art: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
-W0612:172,11:create_art: Unused variable 'height'
-W0613:170,46:create_art: Unused argument 'fh'
-W0612:179,8:create_art: Unused variable 'temp'
-W0612:172,4:create_art: Unused variable 'width'
-R0912:170,0:create_art: Too many branches (17/12)
-C0111:228,0:printer: Missing docstring
-C0103:231,8:printer: Invalid name "x" (should match [a-z_][a-z0-9_]{2,30}$)
-W0612:231,8:printer: Unused variable 'x'
-C0111:235,0:run_exporter: Missing docstring
-W0621:239,13:exporter: Redefining name 'art_canvas' from outer scope (line 29)
-C0111:239,0:exporter: Missing docstring
-C0111:251,0:execute_p: Missing docstring
-W0122:252,4:execute_p: Use of the exec statement
-C0103:257,0: Invalid name "menubar" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:266,0: Invalid name "settings_window" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:270,0: Invalid name "execute_p_widget" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:273,0: Invalid name "executer" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:277,0: Invalid name "divrat_label" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:281,0: Invalid name "divrat_widget" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:284,0: Invalid name "width_label" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:288,0: Invalid name "width_widget" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:291,0: Invalid name "height_label" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:295,0: Invalid name "height_widget" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:300,0: Invalid name "checkbox_frame" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:302,0: Invalid name "enhanced" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:303,0: Invalid name "tf_outline" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:304,0: Invalid name "debug" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:305,0: Invalid name "stable" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:308,0: Invalid name "enhanced_check" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:311,0: Invalid name "debug_check" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:314,0: Invalid name "stable_check" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:317,0: Invalid name "tf_outline_check" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:324,0: Invalid name "col_frame" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:325,0: Invalid name "col_label" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:329,0: Invalid name "col" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:337,0: Invalid name "colour_offset_label" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:341,0: Invalid name "colour_offset_widget" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
-C0103:344,0: Invalid name "start" (should match (([A-Z_][A-Z0-9_]*)|(__.*__))$)
+W0401: 10,0: Wildcard import Tkinter
+F0401: 14,4: Unable to import 'queue'
+C0103: 24,0: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
+C0103: 35,0: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
+R0913:130,0:package_user_input: Too many arguments (7/5)
+R0914:156,0:setup: Too many local variables (19/15)
+C0103:156,0:setup: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
+C0103:156,0:setup: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
+C0103:156,27:setup: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
+C0103:156,30:setup: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
+R0913:204,0:create_art: Too many arguments (11/5)
+R0914:204,0:create_art: Too many local variables (21/15)
+C0103:204,0:create_art: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
+C0103:204,0:create_art: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
+C0103:204,43:create_art: Invalid name "q" (should match [a-z_][a-z0-9_]{2,30}$)
+C0103:204,46:create_art: Invalid name "fh" (should match [a-z_][a-z0-9_]{2,30}$)
+W0612:207,11:create_art: Unused variable 'height'
+W0613:204,46:create_art: Unused argument 'fh'
+W0612:213,8:create_art: Unused variable 'temp'
+W0612:207,4:create_art: Unused variable 'width'
+W0122:286,4:execute_p: Use of the exec statement
 
 
 Report
 ======
-218 statements analysed.
+225 statements analysed.
 
 Messages by category
 --------------------
@@ -105,11 +39,11 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |60     |60       |=          |
+|convention |17     |17       |=          |
 +-----------+-------+---------+-----------+
-|refactor   |5      |5        |=          |
+|refactor   |4      |4        |=          |
 +-----------+-------+---------+-----------+
-|warning    |28     |28       |=          |
+|warning    |6      |6        |=          |
 +-----------+-------+---------+-----------+
 |error      |0      |0        |=          |
 +-----------+-------+---------+-----------+
@@ -122,15 +56,11 @@ Messages
 +-----------+------------+
 |message id |occurrences |
 +===========+============+
-|C0103      |40          |
-+-----------+------------+
-|W0621      |21          |
-+-----------+------------+
-|C0111      |14          |
+|C0103      |11          |
 +-----------+------------+
 |C0301      |6           |
 +-----------+------------+
-|W0612      |4           |
+|W0612      |3           |
 +-----------+------------+
 |R0914      |2           |
 +-----------+------------+
@@ -142,8 +72,6 @@ Messages
 +-----------+------------+
 |W0122      |1           |
 +-----------+------------+
-|R0912      |1           |
-+-----------+------------+
 |F0401      |1           |
 +-----------+------------+
 
@@ -151,7 +79,7 @@ Messages
 
 Global evaluation
 -----------------
-Your code has been rated at 5.73/10 (previous run: 5.73/10)
+Your code has been rated at 8.80/10 (previous run: 8.79/10)
 
 Statistics by type
 ------------------
@@ -159,43 +87,14 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |1      |1          |=          |0.00        |100.00   |
+|module   |1      |1          |=          |100.00      |100.00   |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |0      |0          |=          |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |0      |0          |=          |0           |0        |
 +---------+-------+-----------+-----------+------------+---------+
-|function |13     |13         |=          |0.00        |0.00     |
+|function |15     |15         |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-
-
-
-Raw metrics
------------
-
-+----------+-------+------+---------+-----------+
-|type      |number |%     |previous |difference |
-+==========+=======+======+=========+===========+
-|code      |251    |79.94 |251      |=          |
-+----------+-------+------+---------+-----------+
-|docstring |6      |1.91  |6        |=          |
-+----------+-------+------+---------+-----------+
-|comment   |26     |8.28  |26       |=          |
-+----------+-------+------+---------+-----------+
-|empty     |31     |9.87  |31       |=          |
-+----------+-------+------+---------+-----------+
-
-
-
-External dependencies
----------------------
-::
-
-    Queue (Canvas_based_garbage_art)
-    colorsys (Canvas_based_garbage_art)
-    random (Canvas_based_garbage_art)
-    threading 
-      \-Thread (Canvas_based_garbage_art)
 
 
 
@@ -209,6 +108,36 @@ Duplication
 +-------------------------+------+---------+-----------+
 |percent duplicated lines |0.000 |0.000    |=          |
 +-------------------------+------+---------+-----------+
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |259    |73.58 |256      |+3.00      |
++----------+-------+------+---------+-----------+
+|docstring |30     |8.52  |30       |=          |
++----------+-------+------+---------+-----------+
+|comment   |25     |7.10  |26       |-1.00      |
++----------+-------+------+---------+-----------+
+|empty     |38     |10.80 |38       |=          |
++----------+-------+------+---------+-----------+
+
+
+
+External dependencies
+---------------------
+::
+
+    Queue (Canvas_based_garbage_art)
+    colorsys (Canvas_based_garbage_art)
+    logging (Canvas_based_garbage_art)
+    random (Canvas_based_garbage_art)
+    threading 
+      \-Thread (Canvas_based_garbage_art)
 
 
 
